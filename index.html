@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voxora AI</title>
 
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
+
+header {
+  padding: 25px;
+  background: #111827;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: #22c55e;
+}
+
+main {
+  padding: 40px 20px;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.card {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 25px;
+  background: #1e293b;
+  border-radius: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 10px;
+  background: #22c55e;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #16a34a;
+}
+
+#result {
+  margin-top: 20px;
+  padding: 15px;
+  background: #334155;
+  border-radius: 10px;
+  display: none;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">🎙️ Voxora AI</div>
+</header>
+
+<main>
+  <h1>AI Voice Platform</h1>
+  <p>Enter your text and create a voice experience.</p>
+
+  <div class="card">
+    <textarea id="text" placeholder="Type your text here..."></textarea>
+
+    <button onclick="speakText()">🔊 Generate Voice</button>
+
+    <div id="result"></div>
+  </div>
+</main>
+
+<script>
+function speakText() {
+  const text = document.getElementById("text").value;
+  const result = document.getElementById("result");
+
+  if (text.trim() === "") {
+    alert("Please enter some text first!");
+    return;
+  }
+
+  result.style.display = "block";
+  result.innerHTML = "🔊 Speaking: " + text;
+
+  const speech = new SpeechSynthesisUtterance(text);
+  speech.lang = "en-US";
+  window.speechSynthesis.speak(speech);
+}
+</script>
+
+</body>
+</html>
